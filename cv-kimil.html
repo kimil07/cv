@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimil De La Rosa - CV Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6; color: #1a1a1a;
+            background: linear-gradient(135deg, #2d2d2d 0%, #4a4a4a 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px; margin: 0 auto; background: white;
+            display: grid; grid-template-columns: 320px 1fr;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 15px; overflow: hidden;
+        }
+        .sidebar {
+            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white; padding: 40px 30px; position: relative;
+        }
+        .sidebar::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #333 0%, #666 100%);
+        }
+        .profile-section {
+            text-align: center; margin-bottom: 35px; padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .profile-photo {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; font-size: 48px; font-weight: bold;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        .profile-section h1 { font-size: 24px; margin-bottom: 8px; font-weight: 700; }
+        .profile-section .subtitle {
+            font-size: 13px; opacity: 0.85; margin-top: 5px;
+            color: #aaa; font-weight: 500;
+        }
+        .contact-info { margin-bottom: 35px; }
+        .contact-item {
+            display: flex; align-items: center; margin-bottom: 15px;
+            font-size: 13px; padding: 8px; border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        .contact-item:hover { background: rgba(255,255,255,0.05); }
+        .contact-item i { width: 30px; margin-right: 12px; font-size: 16px; color: #aaa; }
+        .section-title {
+            font-size: 16px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-title i { color: #aaa; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 35px; }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1); padding: 8px 14px;
+            border-radius: 20px; font-size: 11px; font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease; cursor: default;
+        }
+        .skill-tag:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        .language-item {
+            margin-bottom: 15px; padding: 10px;
+            background: rgba(255,255,255,0.05); border-radius: 8px;
+        }
+        .language-item strong { display: block; margin-bottom: 5px; color: #ccc; }
+        .language-bar {
+            height: 6px; background: rgba(255,255,255,0.1);
+            border-radius: 3px; overflow: hidden; margin-top: 8px;
+        }
+        .language-progress {
+            height: 100%; background: linear-gradient(90deg, #666 0%, #999 100%);
+            border-radius: 3px; transition: width 1s ease;
+        }
+        .main-content { padding: 40px 50px; background: #ffffff; }
+        .header-actions {
+            display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 30px;
+        }
+        .btn {
+            padding: 10px 20px; border-radius: 8px; border: none;
+            font-size: 13px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); }
+        .profile-summary {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 25px; border-radius: 12px; margin-bottom: 40px;
+            border-left: 4px solid #333;
+        }
+        .profile-summary h2 { color: #1a1a1a; margin-bottom: 15px; font-size: 20px; }
+        .profile-summary p { color: #333; line-height: 1.8; font-size: 14px; }
+        .content-section { margin-bottom: 45px; }
+        .main-content .section-title {
+            color: #1a1a1a; border-bottom: 3px solid #333;
+            padding-bottom: 12px; margin-bottom: 30px; font-size: 22px;
+        }
+        .timeline-item {
+            position: relative; padding-left: 35px; margin-bottom: 35px;
+            border-left: 3px solid #ddd; transition: all 0.3s ease;
+        }
+        .timeline-item:hover { border-left-color: #333; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -8px; top: 5px;
+            width: 14px; height: 14px; border-radius: 50%; background: white;
+            border: 3px solid #333; box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover::before { transform: scale(1.3); box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.1); }
+        .timeline-header { margin-bottom: 12px; }
+        .timeline-period {
+            display: inline-block;
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            color: white; padding: 4px 12px; border-radius: 15px;
+            font-weight: 600; font-size: 12px; margin-bottom: 10px;
+        }
+        .timeline-position {
+            font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .timeline-position i { color: #444; font-size: 16px; }
+        .timeline-company {
+            color: #444; font-size: 14px; font-weight: 600; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .timeline-company i { font-size: 12px; }
+        .timeline-item ul { list-style: none; margin-top: 12px; }
+        .timeline-item li {
+            padding-left: 25px; position: relative; margin-bottom: 10px;
+            font-size: 14px; color: #4a4a4a; line-height: 1.7;
+        }
+        .timeline-item li::before {
+            content: '✔'; position: absolute; left: 0;
+            color: #333; font-weight: bold; font-size: 16px;
+        }
+        .education-item {
+            margin-bottom: 20px; padding: 20px;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            border-radius: 12px; border-left: 5px solid #333;
+            transition: all 0.3s ease;
+        }
+        .education-item:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .education-degree {
+            font-weight: 700; color: #1a1a1a; font-size: 17px; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .education-degree i { color: #444; }
+        .education-institution { color: #444; font-size: 14px; font-weight: 600; }
+        .academic-highlight {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
+            padding: 12px 16px; margin-top: 12px; border-radius: 10px;
+            border-left: 4px solid #555;
+        }
+        .academic-highlight-text { color: #1a1a1a; font-weight: 600; font-size: 14px; }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px; margin-bottom: 40px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            padding: 20px; border-radius: 12px; color: white; text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .stat-number { font-size: 28px; font-weight: 700; margin-bottom: 5px; }
+        .stat-label { font-size: 12px; opacity: 0.9; font-weight: 500; }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; }
+            .header-actions { display: none; }
+        }
+        @media (max-width: 968px) {
+            .container { grid-template-columns: 1fr; }
+            body { padding: 10px; }
+            .main-content { padding: 30px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-photo">KD</div>
+                <h1>Kimil De La Rosa</h1>
+                <p class="subtitle">Estudiante de Ingeniería Industrial</p>
+            </div>
+            <div class="contact-info">
+                <h3 class="section-title"><i class="fas fa-address-card"></i> Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Kimil07r@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>829-394-0976</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Santo Domingo, RD</span>
+                </div>
+            </div>
+            <div>
+                <h3 class="section-title"><i class="fas fa-code"></i> Habilidades</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Microsoft Word</span>
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">PowerPoint</span>
+                    <span class="skill-tag">Altice Mobile USA</span>
+                    <span class="skill-tag">Servicio al Cliente</span>
+                    <span class="skill-tag">Soporte Técnico</span>
+                    <span class="skill-tag">Ventas</span>
+                    <span class="skill-tag">Atención Chat</span>
+                </div>
+            </div>
+            <div>
+                <h3 class="section-title"><i class="fas fa-language"></i> Idiomas</h3>
+                <div class="language-item">
+                    <strong>Español</strong>
+                    <span>Nativo</span>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="language-item">
+                    <strong>Inglés</strong>
+                    <span>Avanzado</span>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Imprimir
+                </button>
+            </div>
+            <div class="profile-summary">
+                <h2><i class="fas fa-user-circle"></i> Perfil Profesional</h2>
+                <p>
+                    Estudiante de Ingeniería Industrial con experiencia en servicio al cliente, soporte técnico y ventas. Dominio avanzado del inglés y habilidades comprobadas en atención al cliente multicanal. Orientado a resultados con capacidad para trabajar en ambientes dinámicos y de alta demanda.
+                </p>
+            </div>
+            <section class="content-section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formación Académica</h2>
+                <div class="education-item">
+                    <div class="timeline-period">2019 – Actualidad</div>
+                    <div class="education-degree">
+                        <i class="fas fa-user-graduate"></i>
+                        Ingeniería Industrial
+                    </div>
+                    <div class="education-institution">Universidad Autónoma de Santo Domingo (UASD)</div>
+                    <div class="academic-highlight">
+                        <div class="academic-highlight-text">
+                            Promedio académico: 88.7 | 9no Semestre
+                        </div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="timeline-period">2019</div>
+                    <div class="education-degree">
+                        <i class="fas fa-school"></i>
+                        Bachillerato – Mención General
+                    </div>
+                    <div class="education-institution">Centro Educativo Emilio Prud'Homme</div>
+                </div>
+            </section>
+            <section class="content-section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-period">Septiembre 2024 – Actualidad</span>
+                        <div class="timeline-position">
+                            <i class="fas fa-comments"></i>
+                            CSR Chat (Customer Service Representative)
+                        </div>
+                        <div class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Alorica
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Gestionar consultas y solicitudes de clientes a través de plataformas de chat</li>
+                        <li>Resolver problemas y proporcionar soluciones efectivas en tiempo real</li>
+                        <li>Mantener altos estándares de satisfacción del cliente</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-period">Abril 2024 – Agosto 2024</span>
+                        <div class="timeline-position">
+                            <i class="fas fa-calculator"></i>
+                            Asistente Financiero
+                        </div>
+                        <div class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            General Motors (NS Outsourcing)
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Apoyar en procesos financieros y administrativos</li>
+                        <li>Gestionar documentación y reportes financieros</li>
+                        <li>Colaborar con equipos multidisciplinarios</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-period">Enero 2023 – Abril 2024</span>
+                        <div class="timeline-position">
+                            <i class="fas fa-headset"></i>
+                            Representante de Ventas / Soporte Técnico
+                        </div>
+                        <div class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            Intelcia
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Gestionar ventas de productos y servicios de Altice Mobile USA</li>
+                        <li>Proporcionar soporte técnico a clientes en inglés y español</li>
+                        <li>Cumplir metas de ventas y métricas de calidad del servicio</li>
+                        <li>Resolver incidencias técnicas de manera efectiva</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
